@@ -149,10 +149,10 @@ VALUES
 
 INSERT INTO roles (movie_id, actor_id, character)
 VALUES
-('Batman Begins',        'Christian Bale',        'Bruce Wayne'),
-('Batman Begins',       'Michael Caine',         'Alfred'),
-('Batman Begins',        'Liam Neeson',         'Ra's Al Ghul'),
-('Batman Begins',         'Katie Holmes',         'Rachel Dawes'),
+('Batman Begins', 'Christian Bale','Bruce Wayne'),
+('Batman Begins','Michael Caine', 'Alfred'),
+('Batman Begins', 'Liam Neeson', "Ra's Al Ghul"),
+('Batman Begins', 'Katie Holmes', "Rachel Dawes"), 
 ('Batman Begins',        'Gary Oldman',           'Commissioner Gordon'),
 ('The Dark Knight',     'Christian Bale',       'Bruce Wayne'),
 ('The Dark Knight',        'Heath Ledger',          'Joker'),
@@ -172,7 +172,7 @@ VALUES
 .print ""
 
 -- The SQL statement for the movies output
-SELECT (title, year, rating, studio_name) 
+SELECT title, year, rating, studio_name
 FROM movies; 
 
 -- Prints a header for the cast output
@@ -183,5 +183,5 @@ FROM movies;
 
 
 -- The SQL statement for the cast output
-SELECT (movie_id, actor_id, character)
+SELECT movie_id, actor_id, character
 FROM roles;
