@@ -117,6 +117,7 @@ CREATE TABLE movies (
     year NUMBER,
     rating TEXT,
     studio_id INTEGER,
+-- added for many to one relationship with this being many side
     studio_name TEXT
 );
 
@@ -135,6 +136,7 @@ CREATE TABLE roles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     movie_id TEXT,
     actor_id TEXT,
+-- added because many to many relationship think would traditionally  be integer but made them text because have to insert
     character TEXT
 );
 
