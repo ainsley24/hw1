@@ -117,6 +117,7 @@ CREATE TABLE movies (
     year NUMBER,
     rating TEXT,
     studio_id INTEGER,
+-- This is because this is the many side of a one to many relationship
     studio_name TEXT
 );
 
@@ -133,8 +134,9 @@ CREATE TABLE actors (
 
 CREATE TABLE roles (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    actor_id INTEGER,
-    movie_id INTEGER,
+    movie_id TEXT,
+    actor_id TEXT,
+-- This is a many to many relationship (above) Traditionally I think they would be integers but I have to actually insert the data
     character TEXT
 );
 
@@ -147,15 +149,31 @@ VALUES
 ('The Dark Knight', 2008, 'PG-13', 'Warner Bros.'),
 ('The Dark Knight Rises', 2012, 'PG-13', 'Warner Bros.');
 
-
-
+INSERT INTO roles (movie_id, actor_id, role)
+VALUES
+('Batman Begins',        'Christian Bale',        'Bruce Wayne'),
+('Batman Begins',       'Michael Caine',         'Alfred'),
+('Batman Begins',        'Liam Neeson',         'Ra's Al Ghul'),
+('Batman Begins',         'Katie Holmes',         'Rachel Dawes'),
+('Batman Begins',        'Gary Oldman',           'Commissioner Gordon'),
+('The Dark Knight',     'Christian Bale',       'Bruce Wayne'),
+('The Dark Knight',        'Heath Ledger',          'Joker'),
+('The Dark Knight',        'Aaron Eckhart',         'Harvey Dent'),
+('The Dark Knight',        'Michael Caine',         'Alfred'),
+('The Dark Knight',        'Maggie Gyllenhaal',     'Rachel Dawes'),
+('The Dark Knight Rises',  'Christian Bale',       ' Bruce Wayne'),
+('The Dark Knight Rises',  'Gary Oldman',           'Commissioner Gordon'),
+('The Dark Knight Rises',  'Tom Hardy',             'Bane'),
+('The Dark Knight Rises', 'Joseph Gordon-Levitt',  'John Blake'),
+('The Dark Knight Rises',  'Anne Hathaway',        'Selina Kyle');
 -- Prints a header for the movies output
 .print "Movies"
 .print "======"
 .print ""
 
 -- The SQL statement for the movies output
-SELECT * FROM movies; 
+SELECT (title, year, rating, studio_name) 
+FROM movies; 
 
 -- Prints a header for the cast output
 .print ""
@@ -165,4 +183,5 @@ SELECT * FROM movies;
 
 
 -- The SQL statement for the cast output
--- TODO!
+SELECT (movie_id, actor_id, character)
+FROM roles;
